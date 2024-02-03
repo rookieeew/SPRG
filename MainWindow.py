@@ -1,14 +1,12 @@
 import os
 import sys
 
-from PyQt6.QtCore import QSize, Qt
-from PyQt6 import QtWidgets, QtCore, QtGui
-from PyQt6.QtGui import QPixmap, QValidator, QDoubleValidator, QImage
-from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QWidget, QHBoxLayout, \
-    QVBoxLayout, QMenu, QMenuBar, QLineEdit, QComboBox
-
 import numpy as np
 import spectral.io.envi as envi
+from PyQt6 import QtWidgets, QtCore, QtGui
+from PyQt6.QtGui import QPixmap, QDoubleValidator
+from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog, QPushButton, QLabel, QWidget, QHBoxLayout, \
+    QVBoxLayout, QLineEdit, QComboBox
 from matplotlib import pyplot as plt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
@@ -179,6 +177,7 @@ class MainWindow(QMainWindow):
             print("Save Grayscale image is successfully")
             print(f"Grayscale image exported to: {file_path}")
 
+    # write co
     def read_data_from_files(self, file_paths):
         for path in file_paths:
             if path.endswith("hdr"):
@@ -206,7 +205,6 @@ class MainWindow(QMainWindow):
         self.wavelengthComboBox.addItems(np.array([str(i) for i in self.wavelengths]))
 
     def colorImage(self, wavelength, color='gray'):
-        print(self)
         print(f"wavelength{wavelength}")
         desired_wavelength = wavelength
 
@@ -252,44 +250,6 @@ class MainWindow(QMainWindow):
             self.colorImage(wavelength, self.imagePaletteCombobox.currentText())
         else:
             print("You need to select a specific wavelength")
-
-    # def grayscale(self, wavelength):
-    #     desired_wavelength = wavelength
-    #
-    #     # Find the index corresponding to the desired wavelength
-    #     wavelength_index = np.abs(self.wavelengths - desired_wavelength).argmin()
-    #     desired_wavelength_data = self.raw_data[:, :, wavelength_index]
-    #
-    #     # Display grayscale image
-    #     fig, ax = plt.subplots()
-    #
-    #     # Display grayscale image on the axis
-    #     im = ax.imshow(desired_wavelength_data, cmap='gray')
-    #     ax.set_title(f'Grayscale Image for Wavelength {desired_wavelength} nm')
-    #     plt.colorbar(im, ax=ax, label='Intensity')
-    #     fig.show()
-    #     # Convert the figure to a canvas
-    #     canvas = FigureCanvas(fig)
-    #     canvas.draw()
-    #     # Convert the rendered canvas to a QImage
-    #     qimage = canvas.grab().toImage()
-    #     self.grayscale_image = qimage
-    #     # Create a QLabel to display the image
-    #     pixmap = QPixmap.fromImage(qimage)
-    #     self.grayscaleImageLabel.setPixmap(pixmap)
-    #     self.verticalLayout.addWidget(self.grayscaleImageLabel)
-    #     # Convert the figure to a canvas
-    #     canvas = FigureCanvas(fig)
-    #     canvas.draw()
-    #
-    #     # Convert the rendered canvas to a QImage
-    #     qimage = canvas.grab().toImage()
-    #     self.grayscale_image = qimage
-    #
-    #     # Create a QLabel to display the image
-    #     pixmap = QPixmap.fromImage(qimage)
-    #     self.grayscaleImageLabel.setPixmap(pixmap)
-    #     self.mainLayout.addWidget(self.grayscaleImageLabel)
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
