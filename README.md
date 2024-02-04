@@ -1,5 +1,3 @@
-
-
 # A GUI for processing Hyperspectral Imaging
 
 ## Question:
