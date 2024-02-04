@@ -32,7 +32,7 @@
      <img src="./diagram/ucd-logo.png" width="200" height="200">
 3. Main Window
 
-     The main window is divided into two parts. The upper part is responsible for adjuast the wavelength and the color of image.The lower part is used to show the images.
+     The main window is divided into two sections. The upper portion allows adjustment of wavelength and image color, while the lower section displays the images.
      
      <img src="./diagram/mainwinow.jpg" width="500" height="500">
 4. Import Files
@@ -41,27 +41,29 @@
 
      <img src="./diagram/import.jpg" width="700" height="500">
     
-     You must upload two file after click *Import* button. One file is **.hdr* and another one is **.raw*. There is no need to focus on the order of uploading files. If you just have uploaded one file and close the file dialog window, there is no image to be shown. And you need to re-upload these two required files again. 
+     To import files, click on the *Import* button located in the top-left corner of the window. You'll need to upload two files: a *.hdr* file and a *.raw* file. There's no specific order for uploading these files. If only one file is uploaded or the file dialog window is closed without completing the upload, the grayscale images won't be displayed, necessitating a re-upload of both files.
 
      <img src="./diagram/datalist.jpg" width="1000" height="100">
 5. Show Grayscale Image
-     After you uploaded two files successfully, you will see the grayscale displaying on the lower part of the main window.(The color of grayscale image is gray, but allow to change the color.)
+
+  	Upon successful upload of both files, the grayscale image will be displayed in the lower section of the main window. The grayscale image is initially shown in gray, but users can customize the color.
 
      <img src="./diagram/afterupload.jpg" width="500" height="500">
-6. Select wavelengths
-	   There are two way to change the wavelength of grayscale images. The first way is to type a wavelength in the text line.Only allow to type number and dot.  The maximum of typed number is 12 bits. After you finished typing, you can press *Enter* button or *Enter* on your keyboard. And the second  way changes the wavelength via the combobox allocated on the right side of *Enter* button.
+8. Select wavelengths
+
+   There are two methods to adjust the wavelength of the grayscale images. Users can either input a wavelength directly into the text field, limited to numbers and decimal points, with a maximum of 12 bits. Upon completion, pressing 'Enter' on the keyboard or clicking the *Enter* button will update the image. Alternatively, users can select a wavelength from the combobox on the right side of the *Enter* button.
 	
      <img src="./diagram/selectwave.jpg" width="400" height="400">
-7. Select different colors via palette Combobox
+10. Select different colors via palette Combobox
 
-     Additional funtion. In order to serve colorblind users, they can choose different colors through the color combobox.(I can not make sure these colors suitale for colorblind users. But this problem is easy to deal with.)
+     For added accessibility, users can choose different colors through the color combobox. This feature is particularly useful for colorblind users, allowing them to select a color scheme that suits their needs.(I can not make sure these colors suitale for colorblind users. But this problem is easy to deal with.)
 	
      <img src="./diagram/colors.jpg" width="200" height="800">
-8. Export Grayscale Image as TIFF file
+11. Export Grayscale Image as TIFF file
 	 
      Addition funtion. If users want to save a grayscale image, they can find *Export* button in the *File* menu that is on the left top.
 
-     The exported image is stored in the same path of original data and with same prefix file name in default. The format of exported file is TIFF. Files in this format are often used for spectral processing, which is of higher quality.
+     The exported image is stored in the same path of original data and with same prefix file name in default. The format of exported file is *TIFF*. Files in this format are often used for spectral processing, which is of higher quality.
 
      <img src="./diagram/export.jpg" width="700" height="500">
   	 
