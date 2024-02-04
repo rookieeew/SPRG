@@ -136,6 +136,12 @@ class MainWindow(QMainWindow):
         self.grayscale_image = ""
 
     # slot
+
+    '''
+    Used for wavelength edit line.
+    When typed a wavelength in the space, the combobox will change to the wavelength
+    '''
+
     def typed(self):
         if self.wavelengthEdit.text() == "":
             print("No Wavelength Typed")
@@ -147,10 +153,20 @@ class MainWindow(QMainWindow):
             self.wavelengthComboBox.setCurrentText(self.wavelengthEdit.text())
             self.colorImage(wavelength, self.imagePaletteCombobox.currentText())
 
+    '''
+    If users select a wavelength from wavelength combobox, it will trigger the image change
+    based on the selected wavelength
+    '''
+
     def select_wavelength_from_combobox(self, s):
         self.wavelengthEdit.setText(self.wavelengthComboBox.currentText())
         wavelength = float(s)
         self.colorImage(wavelength, self.imagePaletteCombobox.currentText())
+
+    '''
+    This method is used to open a file dialog twice. Users need to select two files(*.hdr, *.raw)
+    If users just upload one or zero file, there is no image shown. 
+    '''
 
     def import_file(self):
         for i in range(2):
@@ -163,6 +179,12 @@ class MainWindow(QMainWindow):
             self.read_data_from_files(self.uploaded_files)
         else:
             print("Lock files")
+
+    '''
+    export a grayscale image to the currently working directory. And you can change the path 
+    if you want to do.
+    The saved image is TIFF format.
+    '''
 
     def export_grayscale_image(self):
         saved_path = os.path.join(os.getcwd() + "/" + self.file_prefix + ".tif")
@@ -177,7 +199,11 @@ class MainWindow(QMainWindow):
             print("Save Grayscale image is successfully")
             print(f"Grayscale image exported to: {file_path}")
 
-    # write co
+    '''
+    Read data from the two uploaded file and store them in two class attributes.
+    And the values of combobox come from this method
+    '''
+
     def read_data_from_files(self, file_paths):
         for path in file_paths:
             if path.endswith("hdr"):
@@ -203,6 +229,11 @@ class MainWindow(QMainWindow):
         self.raw_data = raw_data
         self.wavelengths = wavelengths
         self.wavelengthComboBox.addItems(np.array([str(i) for i in self.wavelengths]))
+
+    '''
+    This method generates a grayscale image. The default color is gray. The default wavelength is 
+    the minimum in the all wavelengths.
+    '''
 
     def colorImage(self, wavelength, color='gray'):
         print(f"wavelength{wavelength}")
@@ -243,6 +274,10 @@ class MainWindow(QMainWindow):
         pixmap = QPixmap.fromImage(qimage)
         self.grayscaleImageLabel.setPixmap(pixmap)
         self.mainLayout.addWidget(self.grayscaleImageLabel)
+
+    '''
+        This method services changing the color of grayscale
+    '''
 
     def selectColorImage(self):
         if self.wavelengthComboBox.currentText() != "":
